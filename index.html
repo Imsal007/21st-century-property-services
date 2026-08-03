@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>21st Century Property Services | Premium UK Refurbishment</title>
-    <meta name="description" content="Elite electrical, plumbing, painting, and full house refurbishment services across the UK. 15+ years experience. WhatsApp us for a free quote.">
+    <meta name="description" content="Elite electrical, plumbing, painting & full house refurbishment across the UK. 15+ years experience. Fast WhatsApp quotes.">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Inter (Premium SaaS Standard) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Plus Jakarta Sans (Modern, Geometric, High-Impact) -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -19,18 +19,19 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
                     colors: {
                         brand: {
-                            dark: '#0f172a', /* Slate 900 */
-                            primary: '#2563eb', /* Blue 600 - Pinterest inspired */
-                            light: '#f8fafc',
-                            surface: '#ffffff'
+                            navy: '#0B132B',      /* Deep Navy from Pin */
+                            teal: '#06D6A0',      /* Vibrant Teal Accent */
+                            orange: '#F48C06',    /* High-CTR Orange */
+                            light: '#F8F9FA',     /* Clean Background */
+                            surface: '#FFFFFF'
                         }
                     },
                     boxShadow: {
-                        'glow': '0 0 40px -10px rgba(37, 99, 235, 0.3)',
-                        'card': '0 10px 40px -10px rgba(0,0,0,0.08)'
+                        'hard': '8px 8px 0px 0px rgba(11, 19, 43, 0.1)',
+                        'glow-teal': '0 0 30px -5px rgba(6, 214, 160, 0.4)'
                     }
                 }
             }
@@ -38,161 +39,216 @@
     </script>
     
     <style>
-        /* Custom Animations & Utilities */
-        .fade-up { animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(30px); }
-        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+        /* Custom Utilities for Pinterest Vibe */
+        .text-stroke { -webkit-text-stroke: 1px rgba(255,255,255,0.1); }
+        .clip-diagonal { clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
         
-        .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        /* Smooth Reveal Animation */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
         
-        /* Bento Grid Hover */
-        .bento-item { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-        .bento-item:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.12); }
-        
-        /* Smooth Scroll Padding */
-        section { scroll-margin-top: 80px; }
+        /* Bullet Point Styling */
+        .service-list li { position: relative; padding-left: 1.75rem; margin-bottom: 0.75rem; }
+        .service-list li::before { 
+            content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+            position: absolute; left: 0; top: 2px; color: #06D6A0; font-size: 0.9rem;
+        }
     </style>
 </head>
-<body class="font-sans text-slate-800 bg-brand-light antialiased selection:bg-brand-primary selection:text-white">
+<body class="font-sans text-brand-navy bg-brand-light antialiased selection:bg-brand-teal selection:text-white">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
             <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
-                <div class="w-10 h-10 bg-brand-dark rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">~</div>
-                <span class="font-bold text-xl tracking-tight text-brand-dark">21st Century<span class="text-brand-primary">.</span></span>
+                <div class="w-10 h-10 bg-brand-navy rounded-lg flex items-center justify-center text-brand-teal font-bold text-xl shadow-hard">~</div>
+                <span class="font-extrabold text-xl tracking-tight text-brand-navy">21st Century<span class="text-brand-teal">.</span></span>
             </div>
             
             <div class="hidden md:flex items-center gap-8">
-                <a href="#services" class="text-sm font-medium text-slate-600 hover:text-brand-primary transition">Services</a>
-                <a href="#process" class="text-sm font-medium text-slate-600 hover:text-brand-primary transition">Process</a>
-                <a href="https://wa.me/447956557621" target="_blank" class="bg-brand-dark text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-slate-800 transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                <a href="#services" class="text-sm font-bold text-slate-600 hover:text-brand-navy transition">Services</a>
+                <a href="#process" class="text-sm font-bold text-slate-600 hover:text-brand-navy transition">Process</a>
+                <a href="https://wa.me/447956557621" target="_blank" class="bg-brand-navy text-white px-6 py-3 rounded-lg font-bold text-sm hover:bg-slate-800 transition shadow-hard transform hover:-translate-y-1">
                     Get Free Quote
                 </a>
             </div>
 
-            <button id="mobile-menu-btn" class="md:hidden text-slate-700 text-2xl"><i class="fas fa-bars"></i></button>
+            <button id="mobile-menu-btn" class="md:hidden text-brand-navy text-2xl"><i class="fas fa-bars"></i></button>
         </div>
         
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full bg-white border-b border-slate-100 shadow-xl p-6 flex flex-col gap-4 md:hidden">
-            <a href="#services" class="text-lg font-medium text-slate-700">Services</a>
-            <a href="#process" class="text-lg font-medium text-slate-700">Process</a>
-            <a href="https://wa.me/447956557621" class="bg-brand-primary text-white text-center py-3 rounded-xl font-bold">WhatsApp Us Now</a>
+            <a href="#services" class="text-lg font-bold text-slate-700">Services</a>
+            <a href="#process" class="text-lg font-bold text-slate-700">Process</a>
+            <a href="https://wa.me/447956557621" class="bg-brand-teal text-brand-navy text-center py-3 rounded-lg font-extrabold">WhatsApp Us Now</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        <!-- Background Blobs -->
-        <div class="absolute top-0 right-0 -mr-32 -mt-32 w-[600px] h-[600px] bg-blue-100/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
-        <div class="absolute bottom-0 left-0 -ml-32 -mb-32 w-[500px] h-[500px] bg-slate-200/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70"></div>
+    <!-- Hero Section (High Contrast & Strategic) -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-brand-navy clip-diagonal">
+        <!-- Abstract Background Elements -->
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-teal/10 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand-orange/10 rounded-full filter blur-3xl"></div>
 
-        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm text-xs font-bold text-brand-primary uppercase tracking-wider mb-8 fade-up" style="animation-delay: 0.1s;">
-                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Available UK-Wide
-            </div>
-            
-            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-brand-dark mb-6 leading-[1.1] fade-up" style="animation-delay: 0.2s;">
-                Premium Property<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-blue-400">Services.</span>
-            </h1>
-            
-            <p class="text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed fade-up" style="animation-delay: 0.3s;">
-                Electrical, plumbing, painting & full refurbishments. 15+ years of elite craftsmanship delivered with zero stress.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center fade-up" style="animation-delay: 0.4s;">
-                <a href="https://wa.me/447956557621" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-brand-primary text-white rounded-full font-bold text-lg shadow-glow hover:bg-blue-700 transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
-                    <i class="fab fa-whatsapp text-xl"></i> WhatsApp Quote
-                </a>
-                <a href="#services" class="w-full sm:w-auto px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-full font-bold text-lg hover:bg-slate-50 transition">
-                    View Services
-                </a>
-            </div>
-
-            <!-- Trust Badges -->
-            <div class="mt-16 pt-8 border-t border-slate-200/60 flex flex-wrap justify-center gap-8 text-slate-500 text-sm font-semibold fade-up" style="animation-delay: 0.5s;">
-                <div class="flex items-center gap-2"><i class="fas fa-shield-alt text-brand-primary"></i> Fully Insured</div>
-                <div class="flex items-center gap-2"><i class="fas fa-star text-brand-primary"></i> 5-Star Rated</div>
-                <div class="flex items-center gap-2"><i class="fas fa-clock text-brand-primary"></i> 24/7 Support</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Bar -->
-    <section class="bg-brand-dark py-12">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div><div class="text-3xl font-bold text-white mb-1">15+</div><div class="text-slate-400 text-xs uppercase tracking-widest">Years Exp.</div></div>
-            <div><div class="text-3xl font-bold text-white mb-1">500+</div><div class="text-slate-400 text-xs uppercase tracking-widest">Projects</div></div>
-            <div><div class="text-3xl font-bold text-white mb-1">100%</div><div class="text-slate-400 text-xs uppercase tracking-widest">Satisfaction</div></div>
-            <div><div class="text-3xl font-bold text-white mb-1">UK</div><div class="text-slate-400 text-xs uppercase tracking-widest">Coverage</div></div>
-        </div>
-    </section>
-
-    <!-- Services Bento Grid (Pinterest Inspired) -->
-    <section id="services" class="py-24">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-4">Our Expertise</h2>
-                <p class="text-slate-600">Comprehensive solutions for every corner of your property.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(250px,auto)]">
+        <div class="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+            <div class="reveal active">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-brand-teal/20 text-brand-teal text-xs font-extrabold uppercase tracking-widest mb-6 border border-brand-teal/30">
+                    <i class="fas fa-bolt"></i> UK-Wide Property Experts
+                </div>
                 
-                <!-- Card 1: Electrical -->
-                <div class="bento-item bg-white p-8 rounded-3xl shadow-card border border-slate-100 flex flex-col justify-between group">
-                    <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-brand-primary text-xl mb-6 group-hover:scale-110 transition">
+                <h1 class="text-5xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-6">
+                    Premium Property<br>
+                    <span class="text-brand-teal">Services.</span>
+                </h1>
+                
+                <p class="text-lg text-slate-300 mb-8 max-w-lg leading-relaxed">
+                    Electrical, plumbing, painting & full refurbishments. 15+ years of elite craftsmanship delivered with zero stress.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="https://wa.me/447956557621" target="_blank" class="px-8 py-4 bg-brand-teal text-brand-navy rounded-lg font-extrabold text-lg shadow-glow-teal hover:bg-white transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp text-xl"></i> WhatsApp Quote
+                    </a>
+                    <a href="#services" class="px-8 py-4 bg-transparent border-2 border-white/20 text-white rounded-lg font-bold text-lg hover:bg-white/10 transition flex items-center justify-center">
+                        View Services
+                    </a>
+                </div>
+
+                <!-- Trust Indicators -->
+                <div class="mt-10 flex flex-wrap gap-6 text-slate-400 text-sm font-semibold">
+                    <div class="flex items-center gap-2"><i class="fas fa-shield-alt text-brand-teal"></i> Fully Insured</div>
+                    <div class="flex items-center gap-2"><i class="fas fa-star text-brand-orange"></i> 5-Star Rated</div>
+                    <div class="flex items-center gap-2"><i class="fas fa-clock text-brand-teal"></i> 24/7 Support</div>
+                </div>
+            </div>
+
+            <!-- Hero Visual / Stats Card -->
+            <div class="relative reveal active" style="transition-delay: 0.2s;">
+                <div class="bg-white p-8 rounded-2xl shadow-2xl border border-slate-100 relative z-10">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="p-4 bg-brand-light rounded-xl border border-slate-100">
+                            <div class="text-3xl font-extrabold text-brand-navy mb-1">15+</div>
+                            <div class="text-xs font-bold text-slate-500 uppercase">Years Exp.</div>
+                        </div>
+                        <div class="p-4 bg-brand-light rounded-xl border border-slate-100">
+                            <div class="text-3xl font-extrabold text-brand-navy mb-1">500+</div>
+                            <div class="text-xs font-bold text-slate-500 uppercase">Projects</div>
+                        </div>
+                        <div class="p-4 bg-brand-light rounded-xl border border-slate-100 col-span-2 flex items-center gap-4">
+                            <div class="w-12 h-12 bg-brand-orange/20 rounded-full flex items-center justify-center text-brand-orange text-xl"><i class="fas fa-check"></i></div>
+                            <div>
+                                <div class="font-bold text-brand-navy">100% Satisfaction</div>
+                                <div class="text-xs text-slate-500">Guaranteed Workmanship</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Decorative Element -->
+                <div class="absolute -bottom-6 -right-6 w-full h-full bg-brand-teal/20 rounded-2xl -z-10"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section (Bullet Points & High CTR) -->
+    <section id="services" class="py-24 bg-brand-light relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-extrabold text-brand-navy mb-4">Our Expertise</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">Comprehensive solutions delivered with precision. No hidden costs, just quality work.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Service Card 1: Electrical -->
+                <div class="bg-white p-8 rounded-2xl shadow-hard border border-slate-100 hover:border-brand-teal transition group reveal">
+                    <div class="w-14 h-14 bg-brand-navy rounded-xl flex items-center justify-center text-brand-teal text-2xl mb-6 group-hover:scale-110 transition">
                         <i class="fas fa-bolt"></i>
                     </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-brand-dark mb-2">Electrical</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed">Certified installations, fault finding, and safety testing. Safe, compliant, and reliable.</p>
-                    </div>
+                    <h3 class="text-xl font-extrabold text-brand-navy mb-4">Electrical Services</h3>
+                    <ul class="service-list text-slate-600 text-sm font-medium mb-6">
+                        <li>Certified installations & rewiring</li>
+                        <li>Fault finding & safety inspections</li>
+                        <li>Consumer unit upgrades</li>
+                        <li>Emergency electrical repairs</li>
+                    </ul>
+                    <a href="https://wa.me/447956557621?text=Hi,%20I%20need%20an%20electrician" class="inline-flex items-center gap-2 text-brand-teal font-bold hover:gap-3 transition-all">
+                        Book Electrician <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
 
-                <!-- Card 2: Plumbing -->
-                <div class="bento-item bg-white p-8 rounded-3xl shadow-card border border-slate-100 flex flex-col justify-between group">
-                    <div class="w-12 h-12 bg-cyan-50 rounded-2xl flex items-center justify-center text-cyan-600 text-xl mb-6 group-hover:scale-110 transition">
+                <!-- Service Card 2: Plumbing -->
+                <div class="bg-white p-8 rounded-2xl shadow-hard border border-slate-100 hover:border-brand-teal transition group reveal" style="transition-delay: 0.1s;">
+                    <div class="w-14 h-14 bg-brand-navy rounded-xl flex items-center justify-center text-brand-teal text-2xl mb-6 group-hover:scale-110 transition">
                         <i class="fas fa-faucet"></i>
                     </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-brand-dark mb-2">Plumbing</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed">Leak repairs, bathroom fittings, and boiler connections. Precision workmanship guaranteed.</p>
-                    </div>
+                    <h3 class="text-xl font-extrabold text-brand-navy mb-4">Plumbing</h3>
+                    <ul class="service-list text-slate-600 text-sm font-medium mb-6">
+                        <li>Leak detection & repair</li>
+                        <li>Bathroom & kitchen fitting</li>
+                        <li>Boiler connections & maintenance</li>
+                        <li>24/7 Emergency callouts</li>
+                    </ul>
+                    <a href="https://wa.me/447956557621?text=Hi,%20I%20need%20a%20plumber" class="inline-flex items-center gap-2 text-brand-teal font-bold hover:gap-3 transition-all">
+                        Book Plumber <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
 
-                <!-- Card 3: Painting -->
-                <div class="bento-item bg-white p-8 rounded-3xl shadow-card border border-slate-100 flex flex-col justify-between group">
-                    <div class="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 text-xl mb-6 group-hover:scale-110 transition">
+                <!-- Service Card 3: Painting -->
+                <div class="bg-white p-8 rounded-2xl shadow-hard border border-slate-100 hover:border-brand-teal transition group reveal" style="transition-delay: 0.2s;">
+                    <div class="w-14 h-14 bg-brand-navy rounded-xl flex items-center justify-center text-brand-teal text-2xl mb-6 group-hover:scale-110 transition">
                         <i class="fas fa-paint-roller"></i>
                     </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-brand-dark mb-2">Painting</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed">Interior & exterior decorating. Meticulous preparation for flawless finishes.</p>
-                    </div>
+                    <h3 class="text-xl font-extrabold text-brand-navy mb-4">Painting & Decorating</h3>
+                    <ul class="service-list text-slate-600 text-sm font-medium mb-6">
+                        <li>Interior & exterior painting</li>
+                        <li>Wallpapering & finishes</li>
+                        <li>Woodwork & gloss painting</li>
+                        <li>Color consultation included</li>
+                    </ul>
+                    <a href="https://wa.me/447956557621?text=Hi,%20I%20need%20painting%20services" class="inline-flex items-center gap-2 text-brand-teal font-bold hover:gap-3 transition-all">
+                        Get Estimate <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
 
-                <!-- Card 4: Tiling -->
-                <div class="bento-item bg-white p-8 rounded-3xl shadow-card border border-slate-100 flex flex-col justify-between group">
-                    <div class="w-12 h-12 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-600 text-xl mb-6 group-hover:scale-110 transition">
+                <!-- Service Card 4: Tiling -->
+                <div class="bg-white p-8 rounded-2xl shadow-hard border border-slate-100 hover:border-brand-teal transition group reveal">
+                    <div class="w-14 h-14 bg-brand-navy rounded-xl flex items-center justify-center text-brand-teal text-2xl mb-6 group-hover:scale-110 transition">
                         <i class="fas fa-th"></i>
                     </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-brand-dark mb-2">Tiling</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed">Kitchen, bathroom, and floor tiling. Modern patterns and classic styles.</p>
-                    </div>
+                    <h3 class="text-xl font-extrabold text-brand-navy mb-4">Professional Tiling</h3>
+                    <ul class="service-list text-slate-600 text-sm font-medium mb-6">
+                        <li>Kitchen & bathroom tiling</li>
+                        <li>Floor & wall tiling</li>
+                        <li>Waterproofing systems</li>
+                        <li>Modern & classic patterns</li>
+                    </ul>
+                    <a href="https://wa.me/447956557621?text=Hi,%20I%20need%20tiling%20services" class="inline-flex items-center gap-2 text-brand-teal font-bold hover:gap-3 transition-all">
+                        View Options <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
 
-                <!-- Card 5: Full Refurbishment (Featured) -->
-                <div class="bento-item bg-brand-dark p-8 rounded-3xl shadow-glow md:col-span-2 text-white relative overflow-hidden group flex flex-col justify-center">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-brand-primary rounded-full mix-blend-overlay filter blur-3xl opacity-20 group-hover:opacity-30 transition"></div>
-                    <div class="relative z-10">
-                        <div class="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center text-white text-xl mb-6 backdrop-blur-sm">
-                            <i class="fas fa-home"></i>
+                <!-- Service Card 5: Full Refurbishment (Featured) -->
+                <div class="bg-brand-navy p-8 rounded-2xl shadow-glow-teal lg:col-span-2 text-white relative overflow-hidden group reveal" style="transition-delay: 0.1s;">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-brand-teal rounded-full mix-blend-overlay filter blur-3xl opacity-20 group-hover:opacity-30 transition"></div>
+                    <div class="relative z-10 flex flex-col md:flex-row gap-8 items-start">
+                        <div class="flex-1">
+                            <div class="w-14 h-14 bg-brand-teal rounded-xl flex items-center justify-center text-brand-navy text-2xl mb-6">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h3 class="text-2xl font-extrabold mb-4">Full House Refurbishment</h3>
+                            <ul class="service-list text-slate-300 text-sm font-medium mb-6">
+                                <li style="color:#06D6A0">End-to-end project management</li>
+                                <li style="color:#06D6A0">Demolition to final polish</li>
+                                <li style="color:#06D6A0">Multi-trade coordination</li>
+                                <li style="color:#06D6A0">Single point of contact</li>
+                            </ul>
+                            <a href="https://wa.me/447956557621?text=Hi,%20I%20need%20a%20full%20refurbishment" class="inline-flex items-center gap-2 bg-brand-teal text-brand-navy px-6 py-3 rounded-lg font-extrabold hover:bg-white transition">
+                                Start Renovation <i class="fas fa-arrow-right"></i>
+                            </a>
                         </div>
-                        <h3 class="text-2xl font-bold mb-3">Full House Refurbishment</h3>
-                        <p class="text-slate-300 mb-6 max-w-md text-sm">End-to-end project management. From demolition to final polish, we transform your space completely.</p>
-                        <a href="https://wa.me/447956557621" class="inline-flex items-center gap-2 text-white font-bold hover:text-blue-300 transition">Start Project <i class="fas fa-arrow-right text-sm"></i></a>
+                        <div class="hidden md:flex items-center justify-center w-32 text-brand-teal/20 text-9xl rotate-12 select-none">
+                            <i class="fas fa-tools"></i>
+                        </div>
                     </div>
                 </div>
 
@@ -203,26 +259,26 @@
     <!-- Process Section -->
     <section id="process" class="py-24 bg-white">
         <div class="max-w-5xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-brand-dark mb-4">Simple 3-Step Process</h2>
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl font-extrabold text-brand-navy mb-4">Simple 3-Step Process</h2>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-                <div class="hidden md:block absolute top-8 left-[16%] right-[16%] h-0.5 bg-slate-100 -z-10"></div>
+                <div class="hidden md:block absolute top-8 left-[16%] right-[16%] h-1 bg-slate-100 -z-10"></div>
                 
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-white border-2 border-brand-primary text-brand-primary rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-6 shadow-sm relative z-10">1</div>
-                    <h3 class="font-bold text-brand-dark mb-2">Enquire</h3>
+                <div class="text-center reveal">
+                    <div class="w-16 h-16 bg-white border-4 border-brand-navy text-brand-navy rounded-full flex items-center justify-center text-xl font-extrabold mx-auto mb-6 shadow-hard relative z-10">1</div>
+                    <h3 class="font-extrabold text-brand-navy mb-2">Enquire</h3>
                     <p class="text-slate-500 text-sm">Message us on WhatsApp with your requirements.</p>
                 </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-white border-2 border-brand-primary text-brand-primary rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-6 shadow-sm relative z-10">2</div>
-                    <h3 class="font-bold text-brand-dark mb-2">Get Quote</h3>
+                <div class="text-center reveal" style="transition-delay: 0.1s;">
+                    <div class="w-16 h-16 bg-white border-4 border-brand-navy text-brand-navy rounded-full flex items-center justify-center text-xl font-extrabold mx-auto mb-6 shadow-hard relative z-10">2</div>
+                    <h3 class="font-extrabold text-brand-navy mb-2">Get Quote</h3>
                     <p class="text-slate-500 text-sm">Clear, itemized estimate within 24 hours.</p>
                 </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-brand-primary text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-6 shadow-glow relative z-10">3</div>
-                    <h3 class="font-bold text-brand-dark mb-2">Job Done</h3>
+                <div class="text-center reveal" style="transition-delay: 0.2s;">
+                    <div class="w-16 h-16 bg-brand-teal text-brand-navy rounded-full flex items-center justify-center text-xl font-extrabold mx-auto mb-6 shadow-glow-teal relative z-10">3</div>
+                    <h3 class="font-extrabold text-brand-navy mb-2">Job Done</h3>
                     <p class="text-slate-500 text-sm">High-standard completion with minimal disruption.</p>
                 </div>
             </div>
@@ -230,15 +286,17 @@
     </section>
 
     <!-- Contact / Conversion Section -->
-    <section class="py-24 bg-brand-light">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="bg-white rounded-[2.5rem] shadow-card overflow-hidden border border-slate-100">
+    <section class="py-24 bg-brand-navy relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-20"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-100 reveal">
                 <div class="grid grid-cols-1 md:grid-cols-2">
                     
                     <!-- Left: Info -->
-                    <div class="bg-brand-dark p-10 text-white flex flex-col justify-between">
+                    <div class="bg-brand-navy p-10 text-white flex flex-col justify-between">
                         <div>
-                            <h2 class="text-3xl font-bold mb-6">Let's Talk</h2>
+                            <h2 class="text-3xl font-extrabold mb-6">Let's Talk</h2>
                             <p class="text-slate-300 mb-10 text-sm">Ready to upgrade your property? We respond to all WhatsApp enquiries instantly.</p>
                             
                             <div class="space-y-6">
@@ -247,18 +305,18 @@
                                         <i class="fab fa-whatsapp text-xl"></i>
                                     </div>
                                     <div>
-                                        <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">WhatsApp Direct</p>
-                                        <p class="text-lg font-medium group-hover:text-[#25D366] transition">+44 7956 557621</p>
+                                        <p class="text-xs text-slate-400 uppercase tracking-wider font-bold">WhatsApp Direct</p>
+                                        <p class="text-lg font-bold group-hover:text-[#25D366] transition">+44 7956 557621</p>
                                     </div>
                                 </a>
                                 
                                 <div class="flex items-center gap-4">
                                     <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
-                                        <i class="fas fa-map-marker-alt text-red-400"></i>
+                                        <i class="fas fa-map-marker-alt text-brand-orange"></i>
                                     </div>
                                     <div>
-                                        <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Coverage</p>
-                                        <p class="text-lg font-medium">UK Wide</p>
+                                        <p class="text-xs text-slate-400 uppercase tracking-wider font-bold">Coverage</p>
+                                        <p class="text-lg font-bold">UK Wide</p>
                                     </div>
                                 </div>
                             </div>
@@ -274,15 +332,15 @@
                         <form id="quoteForm" class="space-y-5">
                             <div>
                                 <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Name</label>
-                                <input type="text" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-brand-primary focus:ring-2 focus:ring-blue-100 outline-none transition text-sm" placeholder="Your Name">
+                                <input type="text" required class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-brand-teal focus:ring-2 focus:ring-teal-100 outline-none transition text-sm font-medium" placeholder="Your Name">
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Phone</label>
-                                <input type="tel" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-brand-primary focus:ring-2 focus:ring-blue-100 outline-none transition text-sm" placeholder="+44 7xxx xxx xxx">
+                                <input type="tel" required class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-brand-teal focus:ring-2 focus:ring-teal-100 outline-none transition text-sm font-medium" placeholder="+44 7xxx xxx xxx">
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Service</label>
-                                <select class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-brand-primary focus:ring-2 focus:ring-blue-100 outline-none transition text-sm">
+                                <select class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-brand-teal focus:ring-2 focus:ring-teal-100 outline-none transition text-sm font-medium">
                                     <option>Full Refurbishment</option>
                                     <option>Electrical</option>
                                     <option>Plumbing</option>
@@ -290,7 +348,7 @@
                                     <option>Tiling</option>
                                 </select>
                             </div>
-                            <button type="submit" class="w-full bg-brand-primary text-white font-bold py-4 rounded-xl shadow-glow hover:bg-blue-700 transition transform hover:-translate-y-1 mt-2">
+                            <button type="submit" class="w-full bg-brand-orange text-white font-extrabold py-4 rounded-lg shadow-lg hover:bg-orange-600 transition transform hover:-translate-y-1 mt-2">
                                 Request Free Quote
                             </button>
                         </form>
@@ -305,19 +363,19 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
                 <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 bg-brand-dark rounded-lg flex items-center justify-center text-white font-bold text-sm">~</div>
-                    <span class="font-bold text-lg text-brand-dark">21st Century Property Services</span>
+                    <div class="w-8 h-8 bg-brand-navy rounded-lg flex items-center justify-center text-brand-teal font-bold text-sm">~</div>
+                    <span class="font-extrabold text-lg text-brand-navy">21st Century Property Services</span>
                 </div>
-                <div class="flex gap-6 text-sm text-slate-500">
-                    <a href="#" class="hover:text-brand-primary">Services</a>
-                    <a href="#" class="hover:text-brand-primary">Areas</a>
-                    <a href="#" class="hover:text-brand-primary">Contact</a>
+                <div class="flex gap-6 text-sm font-bold text-slate-500">
+                    <a href="#" class="hover:text-brand-navy">Services</a>
+                    <a href="#" class="hover:text-brand-navy">Areas</a>
+                    <a href="#" class="hover:text-brand-navy">Contact</a>
                 </div>
             </div>
             
-            <div class="border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+            <div class="border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400 font-medium">
                 <p>&copy; 2026 21st Century Property Services Ltd. All rights reserved.</p>
-                <p>Designed & Developed by <a href="https://saldigital.co/" target="_blank" class="text-brand-primary font-semibold hover:underline">Sal Digital</a></p>
+                <p>Designed & Developed by <a href="https://saldigital.co/" target="_blank" class="text-brand-teal font-bold hover:underline">Sal Digital</a></p>
             </div>
         </div>
     </footer>
@@ -333,6 +391,14 @@
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
         btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+
+        // Scroll Reveal Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
         // Form Handler
         document.getElementById('quoteForm').addEventListener('submit', function(e) {
